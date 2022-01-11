@@ -104,30 +104,8 @@ def mars_facts():
     return df.to_html()
 
 
-def hemisphere_data(browser):
-    hemisphere_image_urls = []
-    
-    url = 'https://marshemispheres.com/'
-    browser.visit(url)
-    
-    # 3. Write code to retrieve the image urls and titles for each hemisphere.
-    html = browser.html
-    html_soup = soup(html, "html.parser")
-    links = browser.find_by_css('a.product-item img')
 
-    for item in range(len(links)):
-        hemispheres = {}
-        browser.find_by_css("a.product-item img")[item].click()
-        mars_hem = browser.links.find_by_text("Sample").first
-        hemispheres["img_url"] = mars_hem["href"]
-        hemispheres["title"]=browser.find_by_css("h2.title").text
-    
-        hemisphere_image_urls.append(hemispheres)
-    
-    return hemisphere_image_urls
-   
-if __name__ == "__main__":
-    print(scrape_all())
+
 
 
 
